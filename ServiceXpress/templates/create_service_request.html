@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Service Request</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Dashboard, {{ user.first_name }}!</h1>
+        <h2>Create Service Request</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+        </form>
+        <a href="{% url 'service_requests' %}">View My Service Requests</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</body>
+</html>

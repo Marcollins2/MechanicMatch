@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Service Requests</title>
+</head>
+<body>
+    <div class="container">
+        <h2>My Service Requests</h2>
+        {% if requests %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Service Provider</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Submitted On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                    <tr>
+                        <td>{{ request.category }}</td>
+                        <td>
+                            {% if request.service_provider %}
+                                {{ request.service_provider.username }}
+                            {% else %}
+                                Not Assigned
+                            {% endif %}
+                        </td>
+            
+                        <td>{{ request.description }}</td>
+                        <td>{{ request.status }}</td>
+                        <td>{{ request.time|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You have no service requests yet.</p>
+        {% endif %}
+        <a href="{% url 'create_service_request' %}" class="btn btn-primary">Create New Request</a>
+    </div>
+</body>
+</html>
