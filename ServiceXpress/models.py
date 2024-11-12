@@ -1,5 +1,29 @@
 from django.db import models
+from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
+import os
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+
+#A regex pattern that only allows letters and spaces
+alphabetic_validator = RegexValidator(
+    regex=r'^[A-Za-z\s]*$',
+    message='Only alphabetical characters and spaces are allowed.'
+)
+
+#A list of allowed file extensions
+ALLOWED_FILE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.pdf']
+
+#File size limit
+MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
+
+def validate_file_extension(value):
+    ext = os.path.splitext(value.name)[1].lower()  # Get file extension
+    if ext not in ALLOWED_FILE_EXTENSIONS:
+        raise ValidationError(f"Unsupported file extension. Allowed extensions are: {', '.join(ALLOWED_FILE_EXTENSIONS)}")
+
+def validate_file_size(value):
+    if value.size > MAX_FILE_SIZE:
+        raise ValidationError(f"File size exceeds the limit of 10MB. Current file size: {value.size / (1024 * 1024):.2f}MB")
 
 
 class UserManager(BaseUserManager):
@@ -29,8 +53,8 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=20, validators=[alphabetic_validator])
+    last_name = models.CharField(max_length=20, validators=[alphabetic_validator])
     is_customer = models.BooleanField(default=False)
     is_service_provider = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
@@ -81,8 +105,8 @@ class ServiceRequest(models.Model):
         default='pending'
     )
     time = models.DateTimeField(auto_now_add=True)
-    estimated_cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    media = models.FileField(upload_to='service_media/', null=True, blank=True)
+    estimated_cost = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
+    media = models.FileField(upload_to='service_media/', validators=[validate_file_extension, validate_file_size], null=True, blank=True)
     location = models.CharField(max_length=255, null=True, blank=True)
     
     service_provider = models.ForeignKey(

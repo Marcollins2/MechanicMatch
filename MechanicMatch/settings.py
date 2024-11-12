@@ -16,6 +16,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_COOKIE_SECURE = True  # Ensure CSRF cookies are sent over HTTPS
+
 
 # Application definition
 
@@ -27,7 +29,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ServiceXpress',
+    'csp',
 ]
+
+
+# Ensure secure cookies
+SESSION_COOKIE_SECURE = True  # Send session cookies only over HTTPS
+SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript access to session cookies
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Expire sessions on browser close
+SESSION_COOKIE_AGE = 1800 # Session timeout set to 30 minutes (1800 seconds)
+
+# Additional security settings
+SECURE_BROWSER_XSS_FILTER = True  # Enable the X-XSS-Protection header
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent the browser from MIME-sniffing
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -37,7 +52,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware', 
 ]
+
+
+
+#CSP rules
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'", 'trusted-scripts.com')
+CSP_STYLE_SRC = ("'self'", 'trusted-styles.com')
+CSP_IMG_SRC = ("'self'", 'trusted-images.com')
 
 ROOT_URLCONF = 'MechanicMatch.urls'
 
@@ -117,3 +141,7 @@ AUTH_USER_MODEL = 'ServiceXpress.User'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
