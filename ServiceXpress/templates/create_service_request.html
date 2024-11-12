@@ -106,5 +106,24 @@
         <a href="{% url 'service_requests' %}">View My Service Requests</a>
         <a href="{% url 'logout' %}">Logout</a>
     </div>
+    <script>
+        // Check if the browser supports geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                // Get the user's latitude and longitude
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+    
+                // Set the location input value to the user's location (you can format it as needed)
+                var locationInput = document.getElementById('id_location');
+                locationInput.value = 'Lat: ' + latitude + ', Lng: ' + longitude;
+            }, function(error) {
+                console.error('Error getting geolocation: ' + error.message);
+            });
+        } else {
+            console.log('Geolocation is not supported by this browser.');
+        }
+    </script>
+    
 </body>
 </html>
