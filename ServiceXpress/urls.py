@@ -1,9 +1,14 @@
 from django.urls import path
 from . import views
+<<<<<<< HEAD
 from django.conf.urls.static import static
 from django.conf import settings
 
 
+=======
+from django.conf import settings
+from django.conf.urls.static import static
+>>>>>>> b45fc8de8565d8a1f566c900abc845a8d9c22e12
 
 urlpatterns = [
     path('', views.signup, name='signup'),

@@ -1,16 +1,92 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Update Service Request</title>
+    <style>
+        /* Apply background image to the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-image: url("{% static 'img/img1.jpg' %}"); /* Background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for background */
+        }
+
+        /* Container for the form */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for container */
+        }
+
+        .container:hover {
+            transform: scale(1.05); /* Scale the container slightly on hover */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Styling for the submit button */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for button */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            transition: color 0.3s ease; /* Smooth transition for links */
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h2>Update Service Request</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update Request</button>
-    </form>
-    <a href="{% url 'service_provider_dashboard' %}">Back to Dashboard</a>
+    <div class="container">
+        <h2>Update Service Request</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Request</button>
+        </form>
+        <a href="{% url 'service_provider_dashboard' %}">Back to Dashboard</a>
+    </div>
 </body>
 </html>
