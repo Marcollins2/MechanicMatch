@@ -4,95 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Service Request</title>
-    <style>
-        /* Apply background image to the body */
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url("{% static 'img/img1.jpg' %}");
-            background-color: #f4f4f4;
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease-in-out; /* Smooth transition for background */
-        }
-        
-        /* Container for the login form */
-        .container {
-            width: 100%;
-            max-width: 500px;
-            margin: 20px auto;
-            padding: 20px; /* Increased padding */
-            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for container */
-        }
-
-        .container:hover {
-            transform: scale(1.05); /* Scale the container slightly on hover */
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Header styling */
-        h1, h2 {
-            color: #007bff;
-            text-align: center; /* Align headings to the left */
-        }
-
-        h1 {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Form styling */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px; /* Space between form elements */
-            align-items: flex-start; /* Left-align form elements */
-        }
-
-        /* Styling for the submit button */
-        .btn-primary {
-            align: center;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin-top: 20px; /* Added more space between button and form fields */
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for button */
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px); /* Slight lift on hover */
-        }
-
-        /* Link styling */
-        a {
-            color: #007bff;
-            text-decoration: none;
-            font-size: 14px;
-            display: block;
-            margin-top: 15px; /* Added space between links */
-            text-align: left; /* Align links to the left */
-            transition: color 0.3s ease; /* Smooth transition for links */
-        }
-
-        a:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/create_service_request.css' %}">
 </head>
 <body>
     <div class="container">
@@ -100,30 +12,52 @@
         <h2>Create Service Request</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
+            
+            <!-- Category Field -->
+            <div class="form-group">
+                <label for="id_category">Category</label>
+                {{ form.category }}
+            </div>
+            
+            <!-- Service Provider Field -->
+            <div class="form-group">
+                <label for="id_service_provider">Service Provider</label>
+                {{ form.service_provider }}
+            </div>
+            
+            <!-- Description Field -->
+            <div class="form-group">
+                <label for="id_description">Description</label>
+                {{ form.description }}
+            </div>
+            
+            <!-- Media Field -->
+            <div class="form-group">
+                <label for="id_media">Upload Media (optional)</label>
+                {{ form.media }}
+            </div>
+            
+            <!-- Urgency Level Field -->
+            <div class="form-group">
+                <label for="id_urgency_level">Urgency Level</label>
+                {{ form.urgency_level }}
+            </div>
+            
+            <!-- Location Field -->
+            <div class="form-group">
+                <label for="id_location">Location</label>
+                {{ form.location }}
+            </div>
+
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Submit Request</button>
         </form>
-        <a href="{% url 'service_requests' %}">View My Service Requests</a>
-        <a href="{% url 'logout' %}">Logout</a>
+
+        <!-- Links -->
+        <div class="links">
+            <a href="{% url 'service_requests' %}">View My Service Requests</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
     </div>
-    <script>
-        // Check if the browser supports geolocation
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                // Get the user's latitude and longitude
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-    
-                // Set the location input value to the user's location (you can format it as needed)
-                var locationInput = document.getElementById('id_location');
-                locationInput.value = 'Lat: ' + latitude + ', Lng: ' + longitude;
-            }, function(error) {
-                console.error('Error getting geolocation: ' + error.message);
-            });
-        } else {
-            console.log('Geolocation is not supported by this browser.');
-        }
-    </script>
-    
 </body>
 </html>

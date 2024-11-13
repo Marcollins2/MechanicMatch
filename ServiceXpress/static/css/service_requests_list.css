@@ -1,0 +1,118 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-image: url('/static/img/img17.jpg');
+    background-size: cover;  /* Make the image cover the entire page */
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat;  /* Prevent the image from repeating */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container Styling */
+.container {
+    background-color: rgba(135, 206, 235, 0.3);
+    padding: 30px;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+h2 {
+    text-align: center;
+    color: #010913;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    color: #010913;
+    font-size: 20px;
+    font-weight: 900;
+
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Links Styling */
+.links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+a {
+    color: #010913;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+}

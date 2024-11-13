@@ -4,107 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Service Provider Dashboard</title>
-    <style>
-        /* Apply background image to the body */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            background-image: url("{% static 'img/img2.jpeg' %}"); /* Background image */
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease-in-out; /* Smooth transition for background */
-        }
-        
-        /* Container for the login form */
-        .container {
-            width: 100%;
-            max-width: 200px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for container */
-        }
-
-        .container:hover {
-            transform: scale(1.05); /* Scale the container slightly on hover */
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Styling for the submit button */
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin-top: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for button */
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px); /* Slight lift on hover */
-        }
-
-        p {
-            text-align: center;
-            font-size: 14px;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-            transition: color 0.3s ease; /* Smooth transition for links */
-        }
-
-        a:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/service_provider_dashboard.css' %}">
 </head>
 <body>
-    <h2>Pending Service Requests</h2>
-    {% if requests %}
-        <table>
-            <tr>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Location</th>
-                <th>Urgency</th>
-                <th>Action</th>
-            </tr>
-            {% for request in requests %}
-            <tr>
-                <td>{{ request.category }}</td>
-                <td>{{ request.description }}</td>
-                <td>{{ request.location }}</td>
-                <td>{{ request.urgency_level }}</td>
-                <td>
-                    <a href="{% url 'update_service_request' request.id %}">Update</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>No pending requests available.</p>
-    {% endif %}
-    <a href="{% url 'logout' %}">Logout</a>
+    <div class="container">
+        <h2>Pending Service Requests</h2>
+
+        {% if requests %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Urgency</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                    <tr>
+                        <td>{{ request.category }}</td>
+                        <td>{{ request.description }}</td>
+                        <td>{{ request.location }}</td>
+                        <td>{{ request.urgency_level }}</td>
+                        <td>
+                            <a href="{% url 'update_service_request' request.id %}" class="btn btn-primary">Update</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No pending requests available.</p>
+        {% endif %}
+
+        <div class="links">
+            <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+        </div>
+    </div>
 </body>
 </html>

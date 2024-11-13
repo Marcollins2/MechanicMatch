@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
-from django.conf import settings
 from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.signup, name='signup'),
@@ -11,4 +11,4 @@ urlpatterns = [
     path('requests/', views.service_requests_list, name='service_requests'),  
     path('provider/', views.service_provider_dashboard, name='service_provider_dashboard'),
     path('provider/update/<int:pk>/', views.update_service_request, name='update_service_request'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

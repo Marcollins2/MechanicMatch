@@ -4,6 +4,7 @@ from .models import User, ServiceRequest
 from django.contrib import messages
 from .forms import CustomLoginForm, SignupForm, ServiceRequestForm, ServiceProviderUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.utils.html import escape
 
 
 def signup(request):
@@ -49,6 +50,7 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+
 def login_view(request):
     if request.method == 'POST':
         form = CustomLoginForm(request, data=request.POST)
@@ -58,6 +60,7 @@ def login_view(request):
             user = authenticate(request, email=email, password=password)
             
             if user is not None:
+                request.session.flush()
                 login(request, user)
                 messages.success(request, f'Welcome, {user.first_name}!')
 
@@ -77,6 +80,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
+    request.session.flush()
     messages.info(request, 'You have been logged out.')
     return redirect('login')
 
@@ -88,6 +92,7 @@ def create_service_request(request):
         if form.is_valid():
             service_request = form.save(commit=False)
             service_request.user = request.user
+            service_request.description = escape(form.cleaned_data['description'])
             service_request.save()
             messages.success(request, 'Service request submitted successfully!')
             return redirect('service_requests')
