@@ -3,6 +3,7 @@ from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 import os
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils.translation import gettext as _
 
 #A regex pattern that only allows letters and spaces
 alphabetic_validator = RegexValidator(
@@ -107,7 +108,7 @@ class ServiceRequest(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     estimated_cost = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     media = models.FileField(upload_to='service_media/', validators=[validate_file_extension, validate_file_size], null=True, blank=True)
-    location = models.CharField(max_length=255, null=True, blank=True)
+    location = models.CharField(max_length=50, null=True, blank=True, validators=[alphabetic_validator])
     
     service_provider = models.ForeignKey(
         User,

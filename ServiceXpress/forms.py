@@ -24,7 +24,7 @@ class SignupForm(forms.ModelForm):
         if password != confirm_password:
             raise ValidationError("Passwords do not match")
 
-        # Optionally, validate the password using Django's built-in validation
+        # Validate the password using Django's built-in validation
         try:
             password_validation.validate_password(password)
         except ValidationError as e:
