@@ -9,9 +9,9 @@
 /* Body Styling */
 body {
     background-image: url('/static/img/img17.jpg');
-    background-size: cover;  /* Make the image cover the entire page */
-    background-position: center;  /* Center the image */
-    background-repeat: no-repeat;  /* Prevent the image from repeating */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,11 +22,14 @@ body {
 /* Container Styling */
 .container {
     background-color: rgba(135, 206, 235, 0.3);
-    padding: 30px;
-    width: 80%;
-    max-width: 900px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px; /* Increased padding for a more spacious look */
+    width: 95%; /* Take up more width */
+    max-width: 1600px; /* Larger maximum width */
+    height: 80vh; /* Increased height to take up 80% of the viewport */
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    overflow-x: auto; /* Horizontal scroll for large tables */
+    overflow-y: auto;
 }
 
 /* Heading Styling */
@@ -34,7 +37,7 @@ h2 {
     text-align: center;
     color: #010913;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 900;
 }
 
@@ -43,6 +46,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    table-layout: auto; /* Allows columns to adjust based on content */
 }
 
 th, td {
@@ -50,9 +54,9 @@ th, td {
     text-align: left;
     border: 1px solid #ddd;
     color: #010913;
-    font-size: 20px;
-    font-weight: 900;
-
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap; /* Prevent text from wrapping */
 }
 
 th {
@@ -68,18 +72,37 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
+/* Responsive Table Styling */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 16px;
+        display: block;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent content from wrapping */
+    }
+
+    th, td {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
 /* Button Styling */
 .btn-primary {
     background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-decoration: none;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 900;
 }
 
@@ -91,12 +114,12 @@ tr:hover {
 .links {
     text-align: center;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 900;
 }
 
 a {
-    color: #010913;
+    color: #fff;
     text-decoration: none;
     margin: 0 10px;
 }
@@ -105,14 +128,14 @@ a:hover {
     color: #0056b3;
 }
 
-/* Responsive Styling */
+/* Mobile Links Styling */
 @media (max-width: 768px) {
-    .container {
-        width: 90%;
-        padding: 20px;
+    .btn-primary {
+        font-size: 16px;
+        padding: 10px 16px;
     }
-    
-    table {
-        font-size: 14px;
+
+    .links {
+        font-size: 16px;
     }
 }

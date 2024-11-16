@@ -4,6 +4,8 @@ from django.core.exceptions import ValidationError
 import os
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils.translation import gettext as _
+from django.contrib.auth import password_validation
+
 
 #A regex pattern that only allows letters and spaces
 alphabetic_validator = RegexValidator(
@@ -16,6 +18,9 @@ ALLOWED_FILE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.pdf']
 
 #File size limit
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
+
+
+
 
 def validate_file_extension(value):
     ext = os.path.splitext(value.name)[1].lower()  # Get file extension

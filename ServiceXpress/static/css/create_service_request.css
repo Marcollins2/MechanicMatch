@@ -27,6 +27,7 @@ body {
     max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 900px;
 }
 
 /* Heading Styling */
@@ -34,7 +35,7 @@ h1, h2 {
     text-align: center;
     color: #010913;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 900;
 }
 
@@ -90,7 +91,7 @@ select:focus {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .btn-primary:hover {
@@ -104,10 +105,10 @@ select:focus {
 }
 
 a {
-    color: #010913;
+    color: #fff;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 900;
 }
 

@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Create Your Account</title>
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
-<body  class="signup">
+<body class="signup">
     <div class="container">
-        <h2>Sign Up</h2>
+        <h2>Create Your Account</h2>
         <form method="post">
             {% csrf_token %}
             
@@ -18,16 +18,18 @@
                 {{ form.email }}
             </div>
 
-            <!-- First Name Field -->
-            <div class="form-group">
-                <label for="id_first_name">First Name</label>
-                {{ form.first_name }}
-            </div>
-
-            <!-- Last Name Field -->
-            <div class="form-group">
-                <label for="id_last_name">Last Name</label>
-                {{ form.last_name }}
+            <div class="form-group inline-fields">
+                <!-- First Name Field -->
+                <div class="half-width">
+                    <label for="id_first_name">First Name</label>
+                    {{ form.first_name }}
+                </div>
+            
+                <!-- Last Name Field -->
+                <div class="half-width">
+                    <label for="id_last_name">Last Name</label>
+                    {{ form.last_name }}
+                </div>
             </div>
 
             <!-- Password Field -->
@@ -53,7 +55,7 @@
         </form>
         
         <!-- Link to Login Page -->
-        <p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
     </div>
 </body>
 </html>

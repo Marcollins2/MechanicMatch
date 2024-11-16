@@ -58,11 +58,18 @@ MIDDLEWARE = [
 
 
 
-#CSP rules
-CSP_DEFAULT_SRC = ("'self'",)
-CSP_SCRIPT_SRC = ("'self'", 'trusted-scripts.com')
-CSP_STYLE_SRC = ("'self'", 'trusted-styles.com')
-CSP_IMG_SRC = ("'self'", 'trusted-images.com')
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_SCRIPT_SRC = [
+    "'self'", 
+    "'unsafe-eval'", 
+    "'unsafe-inline'", 
+    "https://cdnjs.cloudflare.com", 
+    "https://cdn.jsdelivr.net", 
+    "https://cdn.plot.ly"
+]
+CSP_STYLE_SRC = ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://use.fontawesome.com"]
+CSP_IMG_SRC = ["'self'", "data:"]
+CSP_CONNECT_SRC = ["'self'", "https://cdn.plot.ly"]
 
 ROOT_URLCONF = 'MechanicMatch.urls'
 

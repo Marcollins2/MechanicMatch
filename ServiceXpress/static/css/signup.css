@@ -65,9 +65,10 @@ select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     outline: none;
     transition: all 0.3s ease;
+    font-size: 24px;
 }
 
 input:focus,
@@ -80,13 +81,15 @@ select:focus {
 .btn-primary {
     background-color: #007bff;
     color: #fff;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 10px;
     font-size: 20px;
+    display: inline; /* Button will fit text and not stretch */
+    white-space: nowrap;
 }
 
 .btn-primary:hover {
@@ -95,7 +98,7 @@ select:focus {
 
 /* Link Styling */
 a {
-    color:  #010913;
+    color:  #fff;
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 900;
@@ -121,4 +124,27 @@ p {
         width: 90%;
         padding: 20px;
     }
+}
+
+.inline-fields {
+    display: flex;
+    gap: 20px; /* Adjust spacing between fields if needed */
+}
+
+.inline-fields .half-width {
+    width: 50%; /* Make each field take up half of the container */
+}
+
+.inline-fields .half-width label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inline-fields .half-width input {
+    width: 100%; /* Make the input field full width within its container */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
 }

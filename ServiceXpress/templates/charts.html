@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Request Analytics</title>
+    <link rel="stylesheet" href="{% static 'css/chart.css' %}">
+    
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h2>Service Request Analytics</h2>
+    
+    
+    <div class="chart pie-chart">{{ pie_chart|safe }}</div>
+    
+    
+    <div class="chart bar-chart">{{ bar_chart|safe }}</div>
+
+    <div class="links">
+        <a href="{% url 'service_requests' %}" class="btn btn-primary">Back to Service Requests</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</body>
+</html>

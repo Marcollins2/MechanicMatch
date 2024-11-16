@@ -9,14 +9,13 @@
 /* Body Styling */
 body {
     background-image: url('/static/img/img17.jpg');
-    background-size: cover;  /* Make the image cover the entire page */
-    background-position: center;  /* Center the image */
-    background-repeat: no-repeat;  /* Prevent the image from repeating */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
 /* Container Styling */
@@ -34,7 +33,7 @@ h2 {
     text-align: center;
     color: #010913;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 900;
 }
 
@@ -42,29 +41,43 @@ h2 {
 form {
     display: flex;
     flex-direction: column;
-    font-size: 20px;
-    font-weight: 900;
+    gap: 15px;
+}
+
+/* Adjusting form fields for alignment */
+form p {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+form label {
+    flex: 0 0 150px; /* Fixed label width */
+    text-align: right;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 form .form-control {
-    margin-bottom: 15px;
+    flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 24px;
 }
 
 /* Button Styling */
 .btn-primary {
     background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .btn-primary:hover {
@@ -74,16 +87,13 @@ form .form-control {
 /* Links Styling */
 .links {
     text-align: center;
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 900;
+    margin-top: 24px;
 }
 
 a {
     color: #010913;
     text-decoration: none;
-    margin: 0 10px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 900;
 }
 
@@ -95,10 +105,15 @@ a:hover {
 @media (max-width: 768px) {
     .container {
         width: 90%;
-        padding: 20px;
+        padding: 24px;
     }
 
-    form .form-control {
-        font-size: 20px;
+    form p {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    form label {
+        text-align: left;
     }
 }

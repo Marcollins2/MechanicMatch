@@ -2,9 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.plot.ly;">
+    >
     <title>My Service Requests</title>
     <link rel="stylesheet" href="{% static 'css/service_requests_list.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.11.1/plotly.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -17,6 +20,7 @@
                         <th>Category</th>
                         <th>Service Provider</th>
                         <th>Description</th>
+                        <th>Estimated Cost</th>
                         <th>Status</th>
                         <th>Submitted On</th>
                     </tr>
@@ -27,12 +31,13 @@
                         <td>{{ request.category }}</td>
                         <td>
                             {% if request.service_provider %}
-                                {{ request.service_provider.username }}
+                                {{ request.service_provider.first_name }} {{ request.service_provider.last_name }}
                             {% else %}
                                 Not Assigned
                             {% endif %}
                         </td>
                         <td>{{ request.description }}</td>
+                        <td>{{ request.estimated_cost }}</td>
                         <td>{{ request.status }}</td>
                         <td>{{ request.time|date:"Y-m-d H:i" }}</td>
                     </tr>
@@ -45,6 +50,7 @@
 
         <div class="links">
             <a href="{% url 'create_service_request' %}" class="btn btn-primary">Create New Request</a>
+            <a href="{% url 'charts_page' %}" class="btn btn-secondary">View Analytics</a>
             <a href="{% url 'logout' %}">Logout</a>
         </div>
     </div>

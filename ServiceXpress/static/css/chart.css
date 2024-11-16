@@ -1,0 +1,87 @@
+body {
+    background-image: url('/static/img/img17.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;  
+    opacity: 1;
+}
+
+
+h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+
+.chart {
+    padding: 10px;               
+    width: 30%;                  
+    height: 400px;               
+    margin-bottom: 20px;        
+}
+
+
+.pie-chart,
+.bar-chart {
+    display: flex;
+    justify-content: space-between; 
+    gap: 60px;                       
+}
+
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.links a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.links a:hover {
+    background-color: #0056b3;
+}
+
+/* Button Specific Styling */
+.btn-primary {
+    background-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+/* Plotly Chart Text Styling */
+.plotly .title {
+    font-size: 24px !important;
+    font-weight: bold;
+}
+
+.plotly .xtitle,
+.plotly .ytitle {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+.plotly .legendtext {
+    font-size: 16px !important;
+}
+
+.plotly .hovertext text {
+    font-size: 14px !important;
+}

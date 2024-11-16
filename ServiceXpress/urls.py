@@ -11,4 +11,5 @@ urlpatterns = [
     path('requests/', views.service_requests_list, name='service_requests'),  
     path('provider/', views.service_provider_dashboard, name='service_provider_dashboard'),
     path('provider/update/<int:pk>/', views.update_service_request, name='update_service_request'),
+    path('charts/', views.charts_page, name='charts_page'), 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
